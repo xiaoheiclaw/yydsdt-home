@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>yydsdt · 看板与工具</title>
+<meta name="description" content="个人投研看板与工具集:黄金 regime、GPU 租金、韩国资金流、AI 建设回本、易经起卦。" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#F7F6F3; --fg:#16181D; --muted:#6B6F76; --line:#E6E3DD;
+    --card:#FFFFFF; --accent:#B8942F; --up:#2E7D5B;
+    --sans:"Inter","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:var(--sans); color:var(--fg);
+    background:
+      radial-gradient(120% 120% at 50% -10%, rgba(184,148,47,.08), transparent 55%),
+      var(--bg);
+    -webkit-font-smoothing:antialiased; min-height:100vh;
+  }
+  .wrap{max-width:1000px;margin:0 auto;padding:clamp(40px,8vw,88px) clamp(18px,5vw,28px) 56px}
+  header{margin-bottom:clamp(30px,6vw,52px)}
+  .kicker{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:16px}
+  h1{font-size:clamp(34px,8vw,60px);font-weight:800;letter-spacing:-.03em;line-height:1.02}
+  h1 .dot{color:var(--accent)}
+  .lede{margin-top:16px;max-width:52ch;color:var(--muted);font-size:clamp(14px,2.4vw,16px);line-height:1.65}
+
+  .sec-label{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:36px 0 14px;display:flex;align-items:center;gap:10px}
+  .sec-label::after{content:"";flex:1;height:1px;background:var(--line)}
+
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  @media(max-width:640px){.grid{grid-template-columns:1fr}}
+
+  a.card{
+    display:block;text-decoration:none;color:inherit;
+    background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:22px 24px;position:relative;overflow:hidden;
+    transition:transform .18s cubic-bezier(.2,.8,.2,1), box-shadow .18s, border-color .18s;
+  }
+  a.card:hover{transform:translateY(-3px);box-shadow:0 12px 34px rgba(22,24,29,.09);border-color:#D8D3C8}
+  a.card::after{
+    content:"↗";position:absolute;top:20px;right:22px;color:var(--muted);
+    font-size:16px;transition:color .18s,transform .18s;
+  }
+  a.card:hover::after{color:var(--accent);transform:translate(2px,-2px)}
+  .card .host{font-size:12.5px;color:var(--accent);font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:.01em}
+  .card .name{font-size:19px;font-weight:700;margin:8px 0 6px;letter-spacing:-.01em}
+  .card .desc{font-size:13.5px;color:var(--muted);line-height:1.55}
+  .card .tag{display:inline-block;margin-top:12px;font-size:11px;font-weight:600;color:var(--muted);background:#F1EFE9;border-radius:999px;padding:3px 9px;letter-spacing:.02em}
+
+  footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:12px;letter-spacing:.02em;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  footer a{color:var(--muted);text-decoration:none;border-bottom:1px solid transparent}
+  footer a:hover{color:var(--fg);border-color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="kicker">Dashboards &amp; Tools</div>
+    <h1>yydsdt<span class="dot">.</span></h1>
+    <p class="lede">个人投研看板与工具集。数据每日自动更新，用来给市场叙事上秤——看得见的信号，不是感觉。</p>
+  </header>
+
+  <div class="sec-label">投研 · 看板</div>
+  <div class="grid">
+    <a class="card" href="https://gold.yydsdt.com/">
+      <div class="host">gold.yydsdt.com</div>
+      <div class="name">黄金 Regime 仪表盘</div>
+      <div class="desc">黄金所处的宏观 regime 与信号，每日刷新——实际利率、美元、避险的组合怎么摆。</div>
+      <span class="tag">宏观 · 每日</span>
+    </a>
+    <a class="card" href="https://gpu.yydsdt.com/">
+      <div class="host">gpu.yydsdt.com</div>
+      <div class="name">GPU 租金看板</div>
+      <div class="desc">H100 / H200 / B200 的 Vast.ai 现货租金每日实拉，检验"算力稀缺给资产重定价"这类叙事。</div>
+      <span class="tag">AI 算力 · 每日</span>
+    </a>
+    <a class="card" href="https://kr.yydsdt.com/">
+      <div class="host">kr.yydsdt.com</div>
+      <div class="name">韩国资金流</div>
+      <div class="desc">韩国散户 vs 外资季度净买卖——散户是外资的对手盘，看边际买家的燃料还剩多少。</div>
+      <span class="tag">资金流 · 日频</span>
+    </a>
+    <a class="card" href="https://aicapex.yydsdt.com/">
+      <div class="host">aicapex.yydsdt.com</div>
+      <div class="name">AI 建设回本压力</div>
+      <div class="desc">输入 CapEx 存量与外部 AI 收入，实时算覆盖率与所需复合增速。警报器，不是估值器。</div>
+      <span class="tag">交互模型</span>
+    </a>
+  </div>
+
+  <div class="sec-label">工具</div>
+  <div class="grid">
+    <a class="card" href="https://yijing.yydsdt.com/">
+      <div class="host">yijing.yydsdt.com</div>
+      <div class="name">大衍筮法</div>
+      <div class="desc">易经大衍筮法起卦——五十蓍草、分二挂一，按古法推演本卦与变卦。</div>
+      <span class="tag">易经 · 起卦</span>
+    </a>
+  </div>
+
+  <footer>
+    <span>yydsdt.com · 个人看板</span>
+    <span>更新于 2026-07-10</span>
+  </footer>
+</div>
+</body>
+</html>
