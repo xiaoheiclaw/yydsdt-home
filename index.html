@@ -9,50 +9,53 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <style>
+  /* Swiss Minimalist — white / black / red #FF3000, strict grid, rectangular */
   :root{
-    --bg:#F7F6F3; --fg:#16181D; --muted:#6B6F76; --line:#E6E3DD;
-    --card:#FFFFFF; --accent:#B8942F; --up:#2E7D5B;
+    --bg:#FFFFFF; --fg:#111111; --muted:#6B6B6B; --line:#111111; --line-soft:#E4E4E4;
+    --card:#FFFFFF; --accent:#FF3000; --up:#0A7D3F;
     --sans:"Inter","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   body{
-    font-family:var(--sans); color:var(--fg);
-    background:
-      radial-gradient(120% 120% at 50% -10%, rgba(184,148,47,.08), transparent 55%),
-      var(--bg);
+    font-family:var(--sans); color:var(--fg); background:var(--bg);
     -webkit-font-smoothing:antialiased; min-height:100vh;
   }
   .wrap{max-width:1000px;margin:0 auto;padding:clamp(40px,8vw,88px) clamp(18px,5vw,28px) 56px}
-  header{margin-bottom:clamp(30px,6vw,52px)}
+  header{margin-bottom:clamp(30px,6vw,52px);padding-bottom:clamp(24px,5vw,40px);border-bottom:2px solid var(--fg)}
   .kicker{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:16px}
   h1{font-size:clamp(34px,8vw,60px);font-weight:800;letter-spacing:-.03em;line-height:1.02}
   h1 .dot{color:var(--accent)}
   .lede{margin-top:16px;max-width:52ch;color:var(--muted);font-size:clamp(14px,2.4vw,16px);line-height:1.65}
 
-  .sec-label{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:36px 0 14px;display:flex;align-items:center;gap:10px}
-  .sec-label::after{content:"";flex:1;height:1px;background:var(--line)}
+  .sec-label{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--fg);margin:36px 0 14px;display:flex;align-items:center;gap:12px}
+  .sec-label::after{content:"";flex:1;height:1px;background:var(--line-soft)}
 
-  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:1px solid var(--line-soft)}
+  .grid + .grid{border-top:none}
   @media(max-width:640px){.grid{grid-template-columns:1fr}}
 
   a.card{
     display:block;text-decoration:none;color:inherit;
-    background:var(--card);border:1px solid var(--line);border-radius:16px;
-    padding:22px 24px;position:relative;overflow:hidden;
-    transition:transform .18s cubic-bezier(.2,.8,.2,1), box-shadow .18s, border-color .18s;
+    background:var(--card);border-right:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);
+    padding:24px 26px;position:relative;overflow:hidden;
+    transition:background .16s, color .16s;
   }
-  a.card:hover{transform:translateY(-3px);box-shadow:0 12px 34px rgba(22,24,29,.09);border-color:#D8D3C8}
+  .grid a.card:nth-child(2n){border-right:none}
+  @media(max-width:640px){.grid a.card{border-right:none}}
+  a.card:hover{background:#FAFAFA}
+  a.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:0;background:var(--accent);transition:width .16s}
+  a.card:hover::before{width:3px}
   a.card::after{
-    content:"↗";position:absolute;top:20px;right:22px;color:var(--muted);
-    font-size:16px;transition:color .18s,transform .18s;
+    content:"↗";position:absolute;top:22px;right:24px;color:var(--muted);
+    font-size:16px;transition:color .16s,transform .16s;
   }
   a.card:hover::after{color:var(--accent);transform:translate(2px,-2px)}
   .card .host{font-size:12.5px;color:var(--accent);font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:.01em}
   .card .name{font-size:19px;font-weight:700;margin:8px 0 6px;letter-spacing:-.01em}
   .card .desc{font-size:13.5px;color:var(--muted);line-height:1.55}
-  .card .tag{display:inline-block;margin-top:12px;font-size:11px;font-weight:600;color:var(--muted);background:#F1EFE9;border-radius:999px;padding:3px 9px;letter-spacing:.02em}
+  .card .tag{display:inline-block;margin-top:12px;font-size:11px;font-weight:600;color:var(--fg);background:#F2F2F2;border-radius:0;padding:3px 9px;letter-spacing:.02em}
 
-  footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:12px;letter-spacing:.02em;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line-soft);color:var(--muted);font-size:12px;letter-spacing:.02em;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
   footer a{color:var(--muted);text-decoration:none;border-bottom:1px solid transparent}
   footer a:hover{color:var(--fg);border-color:var(--accent)}
 </style>
